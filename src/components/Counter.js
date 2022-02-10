@@ -1,59 +1,73 @@
 import React, { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { DECREAMENT, INCREAMENT, INCREAMENT_BY_VALUE } from '../redux/actions/type';
+import { add_comment } from '../redux/actions/commentActions';
 
 export default function Counter() {
-  // const [counter, setCounter] = useState(0)
-  const counter = useSelector(state => state.counter)
-  console.log(counter);
+  //   // const [counter, setCounter] = useState(0)
+  //   const counter = useSelector(state => state.counter)
+  //   console.log(counter);
+  
+  //   const dispatch = useDispatch()
+  //   const val = useRef()
+  //                     const handleIncrease = () => {
+  //                                         dispatch({type :INCREAMENT})
+  //                     }
+  //                      const handleDecrease = () => {
+  //                        dispatch({type:DECREAMENT})
+
+
+  //   };
+  const name = useRef()
+  const comment = useRef()
+  const todos = useSelector((stateStore) => stateStore);
+  console.log(todos);
   
   const dispatch = useDispatch()
-  const val = useRef()
-                    const handleIncrease = () => {
-                                        dispatch({type :INCREAMENT})
-                    }
-                     const handleDecrease = () => {
-                       dispatch({type:DECREAMENT})
-  };
+
+
   const handleIncreseByValue = (e) => {
     e.preventDefault()
-  //  console.log(val.current.value)
-    const value = val.current.value
-    if (value == '' || isNaN(Number(value))) alert('Enter a valid value(Number)')
-    else {dispatch({
-      type: INCREAMENT_BY_VALUE,
-      payload : val.current.value
-      
-    })}val.current.value = "";
     
+    if (name.current.value !== '' || comment.current.value !== '') {
+      dispatch(
+        add_comment(todos.length + 1,
+          name.current.value,
+          comment.current.value
+        ))
+      name.current.value = "";
+      comment.current.value = "";
+    }
+    else {
+      alert('invalid task')
+     
+    }
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center mt-3 ">
-      <div className="  ">
-        <div className=" text-center me-5">
-          <p className="fs-4">{counter}</p>
-          <button className="btn btn-primary" onClick={handleIncrease}>
-            Increase
-          </button>
-          <button className="btn btn-danger" onClick={handleDecrease}>
-            Decrease
-          </button>
-        </div>
-      </div>
-      <form onSubmit={handleIncreseByValue}>
-        <p>INCREASE BY VALUE </p>
+    <div className=" w-50 mt-3 p-5 mx-auto border ">
+      <form className=" text-center" onSubmit={handleIncreseByValue}>
+        <p>Add Comment</p>
         <input
+          className="w-75 "
           type="text"
-          ref={val}
-          placeholder="Enter Value "
-          className="form mb-2"
+          ref={name}
+          placeholder="NAME "
         />
         <br />
-        <textarea name="" id="" cols="30" rows="1"></textarea>
+        <textarea
+          className="form w-75  "
+          placeholder="Enter MESSAGE"
+          ref={comment}
+          name=""
+          id=""
+          cols="30"
+          rows="1"
+        ></textarea>
         <br />
-        <button className="btn btn-secondary  ">Increase By Value</button>
+        <button type="submit" className="btn btn-secondary w-75">
+          add
+        </button>
       </form>
     </div>
   );

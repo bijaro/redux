@@ -1,3 +1,1 @@
-export const INCREAMENT = 'INCREAMENT'
-export const DECREAMENT = "DECREAMENT";
-export const INCREAMENT_BY_VALUE = "INCREAMENT_BY_VALUE";
+export const ADD_COMMENT = "ADD_COMMENT";

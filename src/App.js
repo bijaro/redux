@@ -6,11 +6,12 @@ import Comment from './components/Comment';
 function App() {
   return (
     <>
-      <Counter />
-      <Comment />
-  
+      <div >
+        <Counter />
+        <Comment />
+      </div>
     </>
-  )
+  );
 }
 
 export default App;
