@@ -31,7 +31,7 @@ export default function List(props) {
         <button
           className=""
           onClick={handleEdite}
-          className=" border-secondary rounded-1 ms-2 b "
+          className=" border-secondary rounded-1 ms-2  "
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >

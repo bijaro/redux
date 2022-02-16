@@ -10,7 +10,7 @@ const commentReducer = (state = initState, action) => {
       return [...state.filter(t => t.id !== payload)]
     case EDIT_TASK:
       return [...state.map(t => {
-        if (t.id == payload.id) {
+        if (t.id === payload.id) {
           t = { ...payload }
           return t
         }

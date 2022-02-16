@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { add_comment } from '../redux/actions/commentActions';
